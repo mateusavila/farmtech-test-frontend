@@ -7,14 +7,14 @@ useHead({
 const { public: { baseURL, localURL } } = useRuntimeConfig()
 
 // importar a lista de países
-const { data: countries } = await useFetch<CountriesResponse>('/countries', {
+const { data: countries } = await useLazyFetch<CountriesResponse>('/countries', {
   baseURL: localURL,
   // @ts-ignore: O transform está reportando um erro que não faz sentido. Como a rota /countries gera um data: Countries[], estou usando esta função para facilitar a captura dos dados.
   transform: (response) => response.data
 });
 
 // importar a lista de países
-const { data: top5 } = await useFetch<Omit<Reports[], 'region'>>('/top_five', {
+const { data: top5 } = await useLazyFetch<Omit<Reports[], 'region'>>('/top_five', {
   baseURL: localURL
 });
 
