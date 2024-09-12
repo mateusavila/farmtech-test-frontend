@@ -1,7 +1,19 @@
 <script lang="ts" setup>
 import type { Countries } from '~/utils/types'
 useHead({
-  title: 'Farmtech - Teste Frontend'
+  title: 'Farmtech - Teste Frontend',
+  htmlAttrs: {
+    lang: 'pt-br'
+  }
+})
+
+useSeoMeta({
+  title: 'Farmtech - Teste Frontend',
+  ogTitle: 'Farmtech - Teste Frontend',
+  description: 'Este website é um teste para trabalhar na empresa FarmTech.',
+  ogDescription: 'Este website é um teste para trabalhar na empresa FarmTech.',
+  ogImage: 'https://farmtech-test-frontend.vercel.app/share.jpg',
+  twitterCard: 'summary_large_image',
 })
 
 const { public: { baseURL, localURL } } = useRuntimeConfig()
@@ -28,9 +40,7 @@ const page = ref(1)
 const params = ref<{
   page: Ref<number>
   iso?: Ref<string>
-}>({
-  page
-})
+}>({ page })
 
 watch(() => iso.value, (i) => {
   if (i) {
