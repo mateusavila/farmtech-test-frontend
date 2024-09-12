@@ -37,7 +37,7 @@ const buttonClass = ref('text-white bg-gradient-to-br from-pink-500 to-orange-40
 
 <template>
   <template v-if="pending === 'success'">
-    <div class="w-full flex gap-[10px] mt-[20px] justify-center">
+    <div class="w-full flex sm:gap-[10px] mt-[20px] justify-center flex-wrap gap-[2px]">
       <button :class="buttonClass" v-if="data.lastPage > 1 && data.page > 1"
         @click="paginate(1)">primeira</button>
       <button :class="buttonClass" v-if="data.lastPage > 1 && data.page > 1"
@@ -47,6 +47,7 @@ const buttonClass = ref('text-white bg-gradient-to-br from-pink-500 to-orange-40
           <button 
             v-for="{ name, isDisabled }, index in range"
             :key="index"
+            class="sm:block hidden"
             :class="[buttonClass, { 
               'bg-[#ccc] opacity-30': isDisabled 
             }]"
