@@ -13,4 +13,11 @@ describe('useNumberFormat', () => {
     // @ts-ignore: forcing a wrong parameter type
     expect(formatNumber('123456789')).toBeNull()
   })
+
+  it('should format the big number to a more readable number', () => {
+    const { formatLargeNumber } = useNumberFormatter()
+
+    expect(formatLargeNumber(120000000)).toBe('120M')
+    expect(formatLargeNumber(20000000)).toBe('20M')
+  })
 })

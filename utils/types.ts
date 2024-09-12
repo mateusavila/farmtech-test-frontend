@@ -44,6 +44,11 @@ export interface Reports {
   active_diff: number
   fatality_rate: number
   region: RegionInterface
+  country: string
+}
+
+export interface DataReports {
+  data: Reports[]
 }
 
 export interface RangePagination {
