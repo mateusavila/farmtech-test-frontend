@@ -34,19 +34,11 @@ const params = ref<{
 
 watch(() => iso.value, (i) => {
   if (i) {
-    params.value = {
-      page, 
-      iso
-    }
+    params.value = { page, iso }
   } else {
-    params.value = {
-      page
-    }
+    params.value = { page }
   }
-}, { 
-  immediate: true, 
-  deep: true 
-})
+}, {  immediate: true, deep: true })
 
 const { data, status, refresh } = await useLazyFetch<ReportsData>('/reports?per_page=20', {
   baseURL,

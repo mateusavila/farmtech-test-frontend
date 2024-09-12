@@ -7,10 +7,9 @@ export function useNumberFormatter() {
   }
 
   const formatLargeNumber = (number: number): string => {
-    const suffixes = ["", "K", "M", "B", "T"]
-
     if (number === 0) return "0"
 
+    const suffixes = ["", "K", "M", "B", "T"]
     const magnitude = Math.floor(Math.log10(Math.abs(number)) / 3)
     const suffix = suffixes[magnitude]
     const scaled = number / Math.pow(1000, magnitude)

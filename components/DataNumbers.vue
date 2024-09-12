@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 const { formatNumber } = useNumberFormatter();
 const {} = defineProps<{
   cases: number

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 const tab = defineModel<number>()
 const emit = defineEmits<{
   changeTab: [tab: number]

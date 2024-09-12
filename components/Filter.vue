@@ -6,9 +6,7 @@ const emit = defineEmits<{
   submit: [country: string]
 }>()
 const country = ref('')
-
 const getTheIso = (country: string) => countries.find(({name}) => country === name)?.iso ?? ''
-
 const submit = () => emit("submit", getTheIso(country.value))
 </script>
 
