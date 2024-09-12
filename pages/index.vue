@@ -103,7 +103,7 @@ const changeTab = (t: number) => tab.value = t
   <NuxtLayout>
     <MainTitle />
     <MainContent>
-      <Box title="TOP 5">
+      <Box title="TOP 5" class="min-h-[508px]">
         <Tabs @change-tab="changeTab" v-model="tab" />
         <ClientOnly>
           <template v-if="tab === 0">
@@ -124,6 +124,7 @@ const changeTab = (t: number) => tab.value = t
         <Box 
           v-for="{ region, confirmed, deaths, fatality_rate }, index in data.data" 
           :key="index" 
+          class="sm:min-h-[165px] min-h-[325px]"
           :title="`${region.name}${region.province ? ` - ${region.province}` : ''}`">
           <DataNumbers 
             :cases="confirmed"
