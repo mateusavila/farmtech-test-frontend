@@ -38,13 +38,18 @@ const buttonClass = ref('text-white bg-gradient-to-br from-pink-500 to-orange-40
 <template>
   <template v-if="pending === 'success'">
     <div class="w-full flex sm:gap-[10px] mt-[20px] justify-center flex-wrap gap-[2px]">
-      <button :class="buttonClass" v-if="data.lastPage > 1 && data.page > 1"
-        @click="paginate(1)">primeira</button>
-      <button :class="buttonClass" v-if="data.lastPage > 1 && data.page > 1"
-        @click="paginate(data.page - 1)">anterior</button>
+      <button title="primeira página" :class="buttonClass" v-if="data.lastPage > 1 && data.page > 1"
+        @click="paginate(1)">
+        <img src="/first.svg" alt="primeira página" width="24" height="24" loading="lazy">
+      </button>
+      <button title="página anterior" :class="buttonClass" v-if="data.lastPage > 1 && data.page > 1"
+        @click="paginate(data.page - 1)">
+        <img src="/previous.svg" alt="página anterior" width="24" height="24" loading="lazy">
+      </button>
       <client-only>
         <template v-if="data.lastPage > 1">
           <button 
+            :title="`página ${name}`"
             v-for="{ name, isDisabled }, index in range"
             :key="index"
             class="sm:block hidden"
@@ -55,10 +60,14 @@ const buttonClass = ref('text-white bg-gradient-to-br from-pink-500 to-orange-40
             @click="paginate(name)">{{ name }}</button>
         </template>
       </client-only>
-      <button :class="buttonClass" v-if="data.lastPage > 1 && data.page < data.lastPage"
-        @click="paginate(data.page + 1)">próximo</button>
-      <button :class="buttonClass" v-if="data.lastPage > 1 && data.page < data.lastPage"
-        @click="paginate(data.lastPage)">última</button>
+      <button title="próxima página" :class="buttonClass" v-if="data.lastPage > 1 && data.page < data.lastPage"
+        @click="paginate(data.page + 1)">
+        <img src="/next.svg" alt="próxima página" width="24" height="24" loading="lazy">
+      </button>
+      <button title="última página" :class="buttonClass" v-if="data.lastPage > 1 && data.page < data.lastPage"
+        @click="paginate(data.lastPage)">
+        <img src="/ultimate.svg" alt="última página" width="24" height="24" loading="lazy">
+      </button>
     </div>
   </template>
 </template>
