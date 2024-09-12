@@ -3,6 +3,6 @@ export default defineCachedEventHandler(async () => {
 
   return data
 }, {
-  maxAge: 60 * 60 * 24,
+  maxAge: 60 * 60 * 24 * 365,
   name: 'covid-regions'
 })
