@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// opinião: testar o nuxt.config.ts eu acho que é exagero.
+/* v8 ignore start */
 export default defineNuxtConfig({
   app: {
     head: {
@@ -23,3 +25,4 @@ export default defineNuxtConfig({
     }
   }
 })
+/* v8 ignore stop */
