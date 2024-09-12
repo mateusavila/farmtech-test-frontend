@@ -4,7 +4,6 @@ useHead({
   title: 'Farmtech - Teste Frontend'
 })
 
-const { formatNumber, formatLargeNumber } = useNumberFormatter();
 const { public: { baseURL, localURL } } = useRuntimeConfig()
 
 // importar a lista de países
@@ -61,96 +60,8 @@ const onLoadMore = async (p: number) => {
   await refresh()
 }
 
-const casesChartOptions = ref({
-  chart: {
-    type: 'bar',
-    height: 350,
-    animations: {
-      enabled: true,
-      dynamicAnimation: {
-        enabled: true,
-        speed: 850
-      }
-    }
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: '55%',
-      endingShape: 'rounded'
-    },
-  },
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    show: true,
-    width: 2,
-    colors: ['transparent']
-  },
-  xaxis: {
-    categories: [] as string[],
-  },
-  fill: {
-    opacity: 1
-  },
-  tooltip: {
-    y: {
-      formatter: (val: number) => formatNumber(val)
-    }
-  },
-  yaxis: {
-    labels: {
-      formatter: (val: number) => formatLargeNumber(val)
-    }
-  },
-})
-
-const deathsChartOptions = ref({
-  chart: {
-    type: 'bar',
-    height: 350,
-    animations: {
-      enabled: true,
-      dynamicAnimation: {
-        enabled: true,
-        speed: 850
-      }
-    }
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: '55%',
-      endingShape: 'rounded'
-    },
-  },
-  colors: ['#C81E1E'],
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    show: true,
-    width: 2,
-    colors: ['transparent']
-  },
-  xaxis: {
-    categories: [] as string[],
-  },
-  fill: {
-    opacity: 1
-  },
-  yaxis: {
-    labels: {
-      formatter: (val: number) => formatLargeNumber(val)
-    }
-  },
-  tooltip: {
-    y: {
-      formatter: (val: number) => formatNumber(val)
-    }
-  }
-})
+const casesChartOptions = useChartOptions(['#3E8DF3']).options.value
+const deathsChartOptions = useChartOptions(['#C81E1E']).options.value
 
 const tab = ref(0)
 const cases = ref<{name: string, data: number[]}[]>([{
@@ -178,8 +89,8 @@ watch(() => top5.value, (top) => {
       data: deathSortData.map((item) => item.deaths)
     }]
     
-    casesChartOptions.value.xaxis.categories = casesSortData.map((item) => item.country)
-    deathsChartOptions.value.xaxis.categories = deathSortData.map((item) => item.country)
+    casesChartOptions.xaxis.categories = casesSortData.map((item) => item.country)
+    deathsChartOptions.xaxis.categories = deathSortData.map((item) => item.country)
   }
 }, { immediate: true })
 
